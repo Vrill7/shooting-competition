@@ -1,0 +1,56 @@
+@startuml
+
+enum Discipline {
+  PISTOL
+  RIFLE
+  SHOTGUN
+}
+
+class Championship
+note bottom: Worl Cup, Olympic Games e.t.c.
+
+class Event
+note bottom: 10m Air Rifle Men e.t.c.
+
+class Category
+note bottom: Adult, Junior e.t.c.
+
+class Competition {
+    -long id
+    -int year
+    -String city
+    -Championship championship
+    -Discipline discipline
+    -Event event
+    -Category category
+}
+
+Competition *-- Championship
+Competition *-- Discipline
+Competition *-- Event
+Competition *-- Category
+
+class Club {
+    -long id
+    -String name
+}
+
+class Athlete {
+    -long id
+    -int yearOfBirth
+    -String name 
+    -Club club
+}
+
+class Result {
+    -long id
+    -Competition rompetition
+    -Athlete athlete
+    -String result
+}
+
+Athlete *- Club : należy >
+Competition -* Result
+Result *- Athlete
+
+@enduml
